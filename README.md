@@ -107,7 +107,7 @@ Now that we have decided what source we are going to work on, we are going to pe
 <br>We will utimately test our best model on the test set, that in this way will represent data that was not seen by the model.
 <br>Lastly we will use our model to forecast for the next 3 years.
 
-ADD TRAIN TEST SPLIT 
+![TrainTestSplit](./Graphs/TrainTestSplit.png)
 
 ### Validation Set
 Instead of taking only one validation set as part of the test set, we chose to use the `TimeSeriesSpit()` function to create splits of train and validation, that can be used for a cross validation.
@@ -155,8 +155,9 @@ Now that we have selected the SARIMAX(8, 1, 2)(12, 2, 1, 12) we will proceed to 
 ## Predicting on the test
 We used the model to do predictions on the test set and obtained predictions with an RMSE of 10.90 TWh.
 
-ADD graphs preds on test
+![Predsontest](./Graphs/Predsontest.png)
 
+![Predsontestzoom](./Graphs/Predsontestzoom.png)
 
 <br>This is a great result and we were able to achieve a Root Mean Squared Error lower than the Baseline Naive Model!
 <br>The choice of the best AIC ended up being a wise one since we don't see overfitting in our model, as the performance didn't decrease once we used the model on the unseen test set.
@@ -164,7 +165,8 @@ ADD graphs preds on test
 ## Forecasting
 Now we used same model, but fitting it on the whole dataset we have available, to make the best possible predictions, for the next 3 years.
 This graphs shows our results:
-ADD FORECASTING
+
+![Forecasting](./Graphs/Forecasting.png)
 
 We see a steady groth in the production of natural gas, with a seasonality very similar to the one we have seen so far, and with a general growing positive trend.
 We calculated a year-over-year growth of 16.7% between 2021 and 2024 with a relative error of 4%.
@@ -172,8 +174,8 @@ We calculated a year-over-year growth of 16.7% between 2021 and 2024 with a rela
 ## Study of seasonality and states
 We wanted to study the production of natural gas divided by State, to see which state produces the most of it.
 Focusing on the top 20 producers we found:
-ADD PIE STATES
 
+![PieStates](./Graphs/PieStates.png)
 
 <br>We can see that Texas has the lead in terms of production of Electrical Power via natural gas, followed by Florida and California.
 When we went to look at one year of production in Texas we found a very high spike in production in the summer months.
@@ -185,7 +187,7 @@ When we went to look at one year of production in Texas we found a very high spi
 <br>Starting from the top producing states, we selected: Pennsylvania, Massachusetts, Ohio and Michigan.
 This is what we found:
 
-ADD YEAR STATES
+"![YearStates](./Graphs/YearStates.png)"
 
 <br>As we can notice the production of energy is much more stable in these other states, and we can imagine that is due to the much smaller consumption of energy related to air conditioners, since all these states have summers that are much more mild than Texas.
 <br>This can be a way to "beat the seasonality", if there is a possibility to invest in more than one state. 
@@ -212,11 +214,17 @@ Running Time:Note that all of the grid searches on SARIMAX had to be run over ni
 We recommend investing in natural gas, solar energy and wind energy, as those appear to be the most growing sources of energy across the states.
 <br>When taking into consideration the unpredictability of weather, solar and wind energy possess much more risk and thus less reliability. Ultimately we suggest focusing on states that possess natural gas as a main source for generating electrical power. <br>We recommend Texas as the state that has been producing the most electrical power through natural gas. To smooth out the seasonality present in Texas due to the high temperatures in the summer and thus the higher load on generating electricity, we recommend also investing in another state like Pennsylavania, Massachusetts, Ohio or Michigan where there is more of a stable trend in the production of energy annually through natural gas.
 
-## Next Steps ADD
+## Next Steps
+
+To improve our model and for a more in depth study we could also:
+- Study solar and wind generated energy trends.
+- Collect more data for a better detailed analysis, scraping information both farther in the past and records by day instead of by month.
+- Deepen our study of trend and seasonality looking into the possible most influential factors.
+- Utilize more powerful tools like Prophet or AWS SageMaker’s DEEPAR which were not available to us for this study.
 
 ## For More Information
 
-Please review my full analysis in .
+Please review my full analysis in [my Jupyter Notebook](./TimeseriesNotebook.ipynb) or my [presentation](./Presentation.pdf).
 
 For any additional questions, please contact **Maria Kuzmin, marianlkuzmin@gmail.com**
 
@@ -226,20 +234,18 @@ Description of the structure of the repository and its contents:
 
 ```
 ├── .ipynb_checkpoints
+├── Graphs
+    └── Frecasting.png
+    └── PieStates.png
+    └── Predsontest.png
+    └── Predsontestzoom.png
+    └── TrainTestSplit.png
+    └── YearStates.png
 ├── .gitignore
 ├── README.md
 ├── SARgrid1.pkl
-├── SARgs/pkl
-├── Graphs
-    └── Age.png
-    └── ConfusionMatrix.png
-    └── diabetes.png
-    └── Features.png
-    └── hyper.png
-    └── pneum.png
-    └── ROC.png
-    └── Sex.png
- ├── TimeSeriesNotebook.ipynb   
- ├── Presentation.pdf
- └── organised_Gen.csv
+├── SARgs.pkl
+├── TimeSeriesNotebook.ipynb   
+├── Presentation.pdf
+└── organised_Gen.csv
 
