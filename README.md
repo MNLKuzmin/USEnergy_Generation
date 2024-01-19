@@ -1,9 +1,5 @@
-# Phase 4 Project
-## USEnergy_Generation
-<br>Student name: Maria Kuzmin
-<br>Student pace: Flex
-<br>Scheduled project review date/time: Tuesday, March 21st 10AM
-<br>Instructor name: Morgan Jones
+# USEnergy_Generation
+
 ## Time Series Model:
 
 ### Business Problem:
